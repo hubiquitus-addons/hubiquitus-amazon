@@ -1,0 +1,15 @@
+{
+  "name": "hubiquitus-amazon",
+  "description": "Hubiquitus discovery system for Amazon",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hubiquitus-addons/hubiquitus-amazon"
+  },
+  "dependencies": {
+    "lodash": "2.2.*",
+    "aws-sdk": "2.0.*",
+    "hubiquitus-core": "0.8.*"
+  },
+  "main": "./index.js"
+}
