@@ -14,8 +14,9 @@ var fetchInterval = 60000;
  * @param region
  * @param tagName
  */
-function startAmazonDiscovery(accessKeyId, secretAccessKey, region, tagName) {
-  var auth = { "accessKeyId": accessKeyId, "secretAccessKey": secretAccessKey, "region": region};
+function startAmazonDiscovery(params) {
+  var tagName = params.tag;
+  var auth = { "accessKeyId": params.key, "secretAccessKey": params.secret, "region": params.region};
   AWS.config.update(auth);
   var ec2 = new AWS.EC2();
 
