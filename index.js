@@ -2,6 +2,8 @@ var AWS = require("aws-sdk");
 var _ = require("lodash");
 var h = require("hubiquitus-core");
 
+var logger = h.logger("hubiquitus:addons:amazon");
+
 /**
  * @type {number}
  */
@@ -20,16 +22,19 @@ function startAmazonDiscovery(params) {
   AWS.config.update(auth);
   var ec2 = new AWS.EC2();
 
-  setInterval(function () {
+  var updateAddr = function() {
     getAddrs(ec2, tagName, function (err, addrs) {
       if (err) {
-        h.logger.err("An error occured in hubiquitus-amazon while trying to discover servers", err);
+        logger.err("An error occured in hubiquitus-amazon while trying to discover servers", err);
         return
       }
 
       h.set("discoveryAddrs", addrs);
     });
-  }, fetchInterval);
+  }
+
+  updateAddr();
+  setInterval(updateAddr(), fetchInterval);
 }
 
 /**
