@@ -34,7 +34,7 @@ function startAmazonDiscovery(params) {
   }
 
   updateAddr();
-  setInterval(updateAddr(), fetchInterval);
+  setInterval(updateAddr, fetchInterval);
 }
 
 /**
